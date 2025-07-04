@@ -18,7 +18,27 @@ This project leverages a powerful combination of Python libraries and tools for 
 - **Bokeh**: An interactive visualization library for creating dynamic and real-time plots that render in web browsers. Used for visualizing live price updates across parking lots.
 - **Panel**: A library for creating custom interactive dashboards and web applications, seamlessly integrating with Bokeh plots to present the real-time insights.
 - **Google Colab**: The development environment used for writing and executing the Python code.
-  
+
+## 📐 Architecture Diagram
+The following diagram illustrates the high-level architecture and data flow of the ParkSense system:
+
+```
+mermaid
+graph TD
+    A[Historical Dataset - dataset.csv] --> B(Data Preprocessing - Pandas/NumPy);
+    B --> C(Simulated Data Stream - parking_data_stream.csv);
+    C --> D[Pathway Data Ingestion - pw.demo.replay_csv];
+    D --> E{Pathway Real-time Processing};
+    E -- Current Data (pw.this) --> F[Pricing Models:];
+    F --> F1(Model 1: Baseline Linear);
+    F --> F2(Model 2: Demand-Based - Learned Coefficients);
+    F --> F3(Model 3: Competitive - Simplified);
+    E -- All Parking Data --> F3;
+    F1 & F2 & F3 --> G(Combined Prices Stream);
+    G --> H[Real-time Visualization - Bokeh/Panel];
+    H --> I[Interactive Dashboard in Browser];
+```
+
 ## 🚀 Project Architecture and Workflow
 The ParkSense system operates as a real-time data pipeline, designed to continuously calculate and update parking prices.
 1) **Data Ingestion and Preprocessing**:
