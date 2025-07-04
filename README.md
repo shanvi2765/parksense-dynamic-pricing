@@ -23,7 +23,6 @@ This project leverages a powerful combination of Python libraries and tools for 
 The following diagram illustrates the high-level architecture and data flow of the ParkSense system:
 
 ```
-mermaid
 graph TD
     A[Historical Dataset - dataset.csv] --> B(Data Preprocessing - Pandas/NumPy);
     B --> C(Simulated Data Stream - parking_data_stream.csv);
